@@ -3,6 +3,8 @@
 ListWindow[ DrawObject<-Window<-InputWindow<-ListWindow ]
 
 コンストラクタで渡した文字列を基に1行選択メニューの描画と処理。
+
+ListWindowの責任:リストウインドウの選択処理と描画。
 */
 
 #pragma once
