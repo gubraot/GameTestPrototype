@@ -18,6 +18,10 @@ InputWindow( x, x + width, y, y + 4 + (num * 20), num ){
 }
 
 ListWindow::~ListWindow(void){
+	for( unsigned int i = 0; i < item.size(); i++ ){
+		delete item[i];
+	}
+	item.clear();
 }
 
 void ListWindow::drawSelectAttachItem( ItemSize size ){

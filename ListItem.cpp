@@ -15,6 +15,20 @@ yPosition2( y + height ){
 //list end
 }
 
+void ListItem::setItemPosition( int x, int y ){
+	int width  = xPosition2 - xPosition;
+	int height = yPosition2 - yPosition;
+
+	xPosition  = x;
+	xPosition2 = x + width;
+	yPosition  = y;
+	yPosition2 = y + height;
+}
+
+void ListItem::setName( std::string name ){
+	listString = name;
+}
+
 void ListItem::infoBoxMoving(void){
 	if( xPosition < 320 ){
 		infoBoxPositionX[0] = xPosition;

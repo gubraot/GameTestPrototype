@@ -12,16 +12,26 @@ scrollPosition( x + 6 ){
 }
 
 ListRequestWindow::~ListRequestWindow(void){
+	for( int i = 0; i < item.size() - 1; i++ ){
+		delete item[i];
+	}
+	item.clear();
 }
 
 void ListRequestWindow::resetAnimateCount(void){
 	animateCount = 0;
 }
 
+void ListRequestWindow::setListItemPosition(void){
+	for( int i = 0; i < item.size() - 1; i++ ){
+		item[i]->setItemPosition( xPosition, scrollPosition + (i * 20) );
+	}
+}
+
 void ListRequestWindow::countUpScroll(void){
-	if( animateCount < 5 ){
-		scrollPosition += scrollPosition - ( yPosition - ( selectPosition * 20 ) );
-		//todo:scrollPositionに応じてListItemの座標の再セット
+	if( animateCount < 6 ){
+		scrollPosition += ( scrollPosition - ( yPosition - ( selectPosition * 20 ))) * ( 5 + animateCount ) / 10.0;
+		setListItemPosition();
 	}
 }
 
@@ -43,7 +53,7 @@ void ListRequestWindow::calc(void){
 
 void ListRequestWindow::draw(void){
 	windowDraw();
-	SetDrawArea( xPosition, yPosition + 6 , xPosotion2, yPosition2 - 6 );
+	SetDrawArea( xPosition, yPosition + 6 , getxPosition2(), getyPosition2() - 6 );
 	for( unsigned int i = 0; i < item.size(); i++ ){
 		item[i]->draw();
 		if( i == getNowSelectItem() ){

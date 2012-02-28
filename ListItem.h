@@ -29,6 +29,11 @@ public:
 	virtual inline void calc(void){};
 	//アイテム座標の取得(削除？)
 	ItemSize getItemSize(void);
+	//アイテム座標の再セット(左上座標の指定)
+	void setItemPosition( int x, int y );
+	//名前の再設定
+	void setName( std::string name );
+
 
 	//constructor
 	ListItem( int x, int y, int width, int height, std::string listString );

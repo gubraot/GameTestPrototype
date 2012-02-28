@@ -69,4 +69,7 @@ private:
 
 	//カウンタ状態に応じたスクロール位置操作
 	void countUpScroll(void);
+
+	//スクロール位置に応じたItem座標の再セット
+	void setListItemPosition(void);
 };
