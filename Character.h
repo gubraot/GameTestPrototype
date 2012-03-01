@@ -19,7 +19,7 @@ struct CharacterSaveData{
 	int  characterType;
 	int  basicStatus[8];
 	int  elementPoint[7];
-	int	 nowHP;
+	int  nowHP;
 	int  newSP;
 	int  equip[3];
 	int  weaponJuel[8];
