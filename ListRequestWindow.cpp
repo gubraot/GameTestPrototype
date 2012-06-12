@@ -2,13 +2,78 @@
 #include "GameDataManager.h"
 #include "CharacterManager.h"
 
-ListRequestWindow::ListRequestWindow( int x, int y, int width, int num ):
+ListRequestWindow::ListRequestWindow( int x, int y, int width, int num, listcode code ):
 //init list
 InputWindow( x, x + width, y, y + (num * 20), num ),
 selectPosition( 0 ),
 animateCount( 10 ),
 scrollPosition( x + 6 ){
 //list end
+
+	//コードに応じた初期リスト生成
+	switch( code ){
+		case CTYPE:
+			requestListCharacterType();
+			break;
+
+		case CELEMENT:
+			requestListCharacterElement();
+			break;
+
+		case TOTHER:
+			requestListTakeOtherItem();
+			break;
+
+		case OTHER:
+			requestListOtherItem();
+			break;
+
+		case TUSE:
+			requestListTakeUseItem();
+			break;
+
+		case TWEAPON:
+			requestListTakeWeapon();
+			break;
+
+		case UWEAPON:
+			requestListUnusedWeapon();
+			break;
+
+		case WEAPON:
+			requestListWeapon();
+			break;
+
+		case TARMOR:
+			requestListTakeArmor();
+			break;
+
+		case UARMOR:
+			requestListUnusedArmor();
+			break;
+
+		case ARMOR:
+			requestListArmor();
+			break;
+
+		case TSTONE:
+			requestListTakeStone();
+			break;
+
+		case USTONE:
+			requestListUnusedStone();
+			break;
+
+		case STONE:
+			requestListStone();
+			break;
+	}
+
+	//初期位置セット
+	for( unsigned int i = 0; i < item.size(); i++ ){
+		item[i]->setItemPosition( this->xPosition, this->yPosition + ( i * 20 ) );
+	}
+
 }
 
 ListRequestWindow::~ListRequestWindow(void){
@@ -53,17 +118,17 @@ void ListRequestWindow::calc(void){
 
 void ListRequestWindow::draw(void){
 	windowDraw();
-	SetDrawArea( xPosition, yPosition + 6 , getxPosition2(), getyPosition2() - 6 );
+	SetDrawArea( xPosition, yPosition + 1 , getxPosition2(), getyPosition2() - 2 );
 	for( unsigned int i = 0; i < item.size(); i++ ){
 		item[i]->draw();
-		if( i == getNowSelectItem() ){
-			drawSelectAttachItem( item[getNowSelectItem()]->getItemSize() );
-		}
 	}
 	SetDrawArea( 0, 0, 640, 480 );
+	drawSelectAttachItem( item[getNowSelectItem()]->getItemSize() );
 }
 
 void ListRequestWindow::ListAllClear(void){
+
+	if( item.size() == 0 ) return;
 	
 	for( int i = 0; i < item.size() - 1; i++ ){
 		delete item[i];

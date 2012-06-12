@@ -29,6 +29,17 @@ struct CharacterSaveData{
 
 class Character{
 public:
+	//enum
+	enum{
+		FIRE = 0,
+		WIND,
+		EARTH,
+		AQUA,
+		DARK,
+		LIGHT,
+		NONE
+	};
+
 	//method
 	//基礎ステータス加算セット
 	void setStatusHP( int addVolume );
@@ -79,7 +90,11 @@ public:
 	CharacterSaveData createSaveData(void);
 
 	//constructor
-	Character(void);
+	//キャラクター作成時用
+	Character( std::string name, std::string face, int typeNum,
+			   int fire, int wind, int earth, int aqua, int dark, int right, int none );
+	//ロードデータ用
+	Character( const std::vector<std::string>& cash );
 	~Character(void);
 
 private:
