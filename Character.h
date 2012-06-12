@@ -19,7 +19,11 @@ struct CharacterSaveData{
 	int  characterType;
 	int  basicStatus[8];
 	int  elementPoint[7];
+<<<<<<< HEAD
 	int  nowHP;
+=======
+	int	 nowHP;
+>>>>>>> GitHub/master
 	int  newSP;
 	int  equip[3];
 	int  weaponJuel[8];
@@ -29,6 +33,7 @@ struct CharacterSaveData{
 
 class Character{
 public:
+<<<<<<< HEAD
 	//enum
 	enum{
 		FIRE = 0,
@@ -40,6 +45,8 @@ public:
 		NONE
 	};
 
+=======
+>>>>>>> GitHub/master
 	//method
 	//基礎ステータス加算セット
 	void setStatusHP( int addVolume );
@@ -90,17 +97,22 @@ public:
 	CharacterSaveData createSaveData(void);
 
 	//constructor
+<<<<<<< HEAD
 	//キャラクター作成時用
 	Character( std::string name, std::string face, int typeNum,
 			   int fire, int wind, int earth, int aqua, int dark, int right, int none );
 	//ロードデータ用
 	Character( const std::vector<std::string>& cash );
+=======
+	Character(void);
+>>>>>>> GitHub/master
 	~Character(void);
 
 private:
 	//field
 	std::string name;
 	std::string face;
+<<<<<<< HEAD
 	int	statusHP;
 	int	statusSP;
 	int	statusSTR;
@@ -120,6 +132,27 @@ private:
 	int	equipSpilit;
 	int	characterType;
 	int	elementType[7];
+=======
+	int			statusHP;
+	int			statusSP;
+	int			statusSTR;
+	int			statusVIT;
+	int			statusAGI;
+	int			statusDEX;
+	int			statusINT;
+	int			statusMEN;
+	int			statusLevel;
+	int			nowHP;
+	int			nowSP;
+	int			exp;
+	int			level;
+	int			statusPoint;
+	int			equipWeapon;
+	int			equipArmor;
+	int			equipSpilit;
+	int			characterType;
+	int			elementType[7];
+>>>>>>> GitHub/master
 
 	std::vector<int>  equipJuelWeapon;
 	std::vector<int>  equipJuelArmor;
